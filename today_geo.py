@@ -27,9 +27,21 @@ def get_today_geo():
 
 	return articles
 
+def jsonify(articles):
+	jsonobj = []
+	for item in articles:
+		article = item['url']
+		if article is not None:
+			newval = [[item['lon']], [item['lat']], [article]]
+		else:
+			newval = [[item['lon']], [item['lat']], ["None"]]
+			
+		jsonobj.append(newval)
+	return jsonobj
+
 if __name__ == "__main__":
 	articles = get_today_geo()
 	f = open(BASE_FILE, 'w')
-	f.write(str(articles))
+	f.write('story_names='+str(jsonify(articles)))
 	f.close()
 	print 'Got', len(articles), 'articles with geo tags'
