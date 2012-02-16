@@ -11,7 +11,7 @@ import re
 import sys
 from xml.etree import ElementTree as ET
 
-
+BASE_FILE = "/home/bostonglobe/git/where-at/js/stories.js"
 LOCATION_EXIST = "http://10.100.50.131:8080/exist/rest/db/papereye/locations.xql"
 
 def get_today_geo():
@@ -29,4 +29,7 @@ def get_today_geo():
 
 if __name__ == "__main__":
 	articles = get_today_geo()
+	f = open(BASE_FILE, 'w')
+	f.write(str(articles))
+	f.close()
 	print 'Got', len(articles), 'articles with geo tags'
