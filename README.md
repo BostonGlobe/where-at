@@ -16,6 +16,12 @@ Grabs all articles that contain geo information from today's paper.
 *** Notes For the Visualization of the Map ***
 
 The markers require a size field associated with them. If you look at the code
-for generating the markers in snap, there is an associated width and height that needs to be a field.
+for generating the markers in snap, there is an associated width and height
+that needs to be a field.
 
-If you decide on creating an image for this marker, then it can just be a field that is returned with the object for creating an image.
+If you decide on creating an image for this marker, then it can just be a field
+that is returned with the object for creating an image.
+
+*** Visualize Headlines ***
+
+Grab the headline, format it as necessary and show it in the map
