@@ -22,7 +22,7 @@ def get_today_geo():
 	stories = doc.findall('story')
 	articles = []
 	for story in stories:
-		article = {'lat' : story.find('lat').text, 'lon' : story.find('lon').text, 'url' : story.find('url').text }
+		article = {'lat' : story.find('lat').text, 'lon' : story.find('lon').text, 'url' : story.find('url').text , 'headline' : story.find('headline').text, 'location': story.find('location')}
 		articles.append(article)
 
 	return articles
@@ -30,11 +30,12 @@ def get_today_geo():
 def jsonify(articles):
 	jsonobj = []
 	for item in articles:
-		article = item['url']
+		headline = item['headline']
+		article = item['url'] #Note the article is missing the first letter
 		if article is not None:
-			newval = [[item['lon']], [item['lat']], [article]]
+			newval = [[item['lon']], [item['lat']], [article], [headline]]
 		else:
-			newval = [[item['lon']], [item['lat']], ["None"]]
+			newval = [[item['lon']], [item['lat']], ["None"], ["None"]]
 			
 		jsonobj.append(newval)
 	return jsonobj
@@ -44,4 +45,5 @@ if __name__ == "__main__":
 	f = open(BASE_FILE, 'w')
 	f.write('story_names='+str(jsonify(articles)))
 	f.close()
+	print articles
 	print 'Got', len(articles), 'articles with geo tags'

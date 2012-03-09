@@ -38,11 +38,17 @@ function pushimgurl() {
                                   new OpenLayers.Projection("EPSG:4326"), //transform from WGS 1984
                                   map.getProjectionObject() //to Spherical Mercator Projection
                                 );
-		var size = new OpenLayers.Size(100,100);
-		var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-		var icon = new OpenLayers.Icon('http://www.openlayers.org/dev/img/marker.png', size, offset);
-		var marker = new OpenLayers.Marker(lonLat, icon);
-		markerslayer.addMarker(marker);
+		var size = new OpenLayers.Size(300,100);
+		var offset = new OpenLayers.Pixel(0, -size.h);
+		//var locationstring = 'http://www.bostonglobe.com/arts/2012/02/16/list/n6KkywXFxsUN5ktr95PaYO/story.html';
+		//var locationstring = 'https://chart.googleapis.com/chart?chst=d_bubble_icon_text_small&chld=ski|bb|'+story[3]+'|FFFFFF|000000';
+		var locationstring ='https://chart.googleapis.com/chart?chst=d_bubble_texts_big&chld=bb|FEFEFE|000000|HEADLINE|'+story[3];
+		//var locationstring = 'http://richmackey.com/wp-content/uploads/2011/01/google-marker-preview1.png';
+		if (story[3] != 'None') {
+			var icon = new OpenLayers.Icon(locationstring, size, offset);
+			var marker = new OpenLayers.Marker(lonLat, icon);
+			markerslayer.addMarker(marker);
+		}
 	}
 }
 

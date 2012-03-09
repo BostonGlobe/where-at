@@ -23,6 +23,7 @@ return
     <lon>{$lon}</lon>
     <headline>{$headline}</headline>
     <url>{$url}</url>
+    <location>{$location}</location>
   </story>
 }
 </data>
